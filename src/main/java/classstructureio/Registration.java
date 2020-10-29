@@ -10,7 +10,7 @@ public class Registration {
         String name = scanner.nextLine();
         System.out.println("What's your e-mail address? ");
         String email = scanner.nextLine();
-        System.out.println("The following personal data have been registered:\n" +
+        System.out.println("The following personal data has been registered:\n" +
                 "name: " + name + "\n" + "e-mail: " + email);
     }
 }
