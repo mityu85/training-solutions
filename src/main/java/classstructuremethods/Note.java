@@ -30,6 +30,6 @@ public class Note {
     }
 
     public void getNoteText() {
-        System.out.println(this.name + " (" + this.topic + ") " + this.text);
+        System.out.println(this.name + ": (" + this.topic + ") " + this.text);
     }
 }
