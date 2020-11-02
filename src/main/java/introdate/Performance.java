@@ -9,11 +9,11 @@ public class Performance {
     private String artist;
     private LocalTime startTime, endTime;
 
-    public Performance() {
-        date = LocalDate.of(1989, 06, 02);
-        artist = "Queen";
-        startTime = LocalTime.of(18,0);
-        endTime = LocalTime.of(20,0);
+    public Performance(LocalDate date, String artist, LocalTime startTime, LocalTime endTime) {
+        this.date = date;
+        this.artist = artist;
+        this.startTime = startTime;
+        this.endTime = endTime;
     }
 
     public LocalDate getDate() {
