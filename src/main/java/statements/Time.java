@@ -12,11 +12,11 @@ public class Time {
     }
 
     public int getInMinutes() {
-        return h/60+m;
+        return h*60 + m;
     }
 
     public int getInSeconds() {
-        return (h/60)*60 + m*60 + s;
+        return h*60*60 + m*60 + s;
     }
 
     public boolean earlierThan(Time time) {
