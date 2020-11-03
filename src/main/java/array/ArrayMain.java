@@ -7,6 +7,8 @@ public class ArrayMain {
         System.out.println(week[1]);
         System.out.println("The array length is: " + week.length);
 
+        System.out.println();
+
         int[] numb = new int[5];
         numb[0] = 1;
         for (int i = 1; i < numb.length; i++) {
@@ -29,5 +31,11 @@ public class ArrayMain {
         for (int i = 0; i < b.length; i++) {
             System.out.println(b[i]);
         }
+
+        System.out.println();
+
+        ArrayHandler ah = new ArrayHandler();
+        System.out.println(ah.contains(new int[] {1, 2, 3}, 4));
+        System.out.println(ah.find(new int[] {1, 2, 3}, 5));
     }
 }
