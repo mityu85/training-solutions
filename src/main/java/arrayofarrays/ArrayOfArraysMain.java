@@ -29,12 +29,12 @@ public class ArrayOfArraysMain {
                 System.out.println();
                 for (int j : i) {
                     if (j < 10) {
-                        System.out.print(j + "   ");
+                        System.out.print("  " + j);
                     } else {
                         if (j < 100) {
-                            System.out.print(j + "  ");
+                            System.out.print(" " + j);
                         } else {
-                            System.out.print(j + " ");
+                            System.out.print(j);
                         }
                     }
                 }
