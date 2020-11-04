@@ -21,6 +21,14 @@ public class Capsules {
         System.out.println(capsules.getColors());
         capsules.removeLast();
         System.out.println(capsules.getColors());
+
+        System.out.println();
+
+        List<String> list = new ArrayList<>();
+        list = capsules.getColors();
+        System.out.println(list);
+        list.clear();
+        System.out.println(capsules.getColors());
     }
 
     private List<String> l = new ArrayList<>();
