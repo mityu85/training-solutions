@@ -12,6 +12,8 @@ public class Books {
         books.add("Egri Cillagok");
         System.out.println(books.getTitles());
         System.out.println(books.findAllByPrefix("Kincs"));
+        books.removeByPrefix("Kincs");
+        System.out.println(books.getTitles());
     }
 
     private List<String> l = new ArrayList<>();
@@ -32,5 +34,15 @@ public class Books {
 
     public List<String> getTitles() {
         return l;
+    }
+
+    public void removeByPrefix(String prefix) {
+        List<String> r = new ArrayList<>();
+        for (String item: l) {
+            if (item.startsWith(prefix)) {
+                r.add(item);
+            }
+        }
+        l.removeAll(r);
     }
  }
