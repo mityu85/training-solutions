@@ -1,5 +1,7 @@
 package week02;
 
+import java.util.Scanner;
+
 public class Phone {
 
     private String type;
@@ -30,5 +32,14 @@ public class Phone {
 
         Phone phone = new Phone("iPhone", 64);
         System.out.println(phone.getType() + " " + phone.getMem());
+
+        System.out.println("What kind of phone you have?");
+        Scanner sc = new Scanner(System.in);
+        String phoneType = sc.nextLine();
+
+        System.out.println("How many GB storage there is on your phone?");
+        int phoneMem = sc.nextInt();
+        Phone phone1 = new Phone(phoneType, phoneMem);
+        System.out.println(phone1.getType() + " " + phone1.getMem());
     }
 }
