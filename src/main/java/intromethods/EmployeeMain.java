@@ -9,5 +9,8 @@ public class EmployeeMain {
 
         employee.setName("Jane Doe");
         System.out.println(employee);
+
+        employee.raiseSalary(150000);
+        System.out.println(employee);
     }
 }
