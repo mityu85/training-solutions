@@ -73,7 +73,7 @@ public class Office {
     public String printAreasLargerThan(int area) {
         List<MeetingRoom> areasLargerThanList = new ArrayList<>();
         for (MeetingRoom room: meetingRooms) {
-            if(room.getArea() > area) {
+            if (room.getArea() > area) {
                 areasLargerThanList.add(room);
             }
         }
