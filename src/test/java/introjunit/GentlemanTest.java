@@ -11,4 +11,13 @@ public class GentlemanTest {
         public void testSayHello() {
         assertThat(new Gentleman().sayHello("John Doe"), equalTo("Hello John Doe"));
     }
+    @Test
+        public void testSayHello2() {
+            //Given
+                Gentleman gentleman = new Gentleman();
+            //When
+                String hello = gentleman.sayHello("");
+            //Then
+                assertThat(hello, equalTo("Hello Anonymous"));
+        }
 }
