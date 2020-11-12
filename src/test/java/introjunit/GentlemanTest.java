@@ -1,15 +1,14 @@
 package introjunit;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GentlemanTest {
 
     @Test
         public void testSayHello() {
-        assertThat(new Gentleman().sayHello("John Doe"), equalTo("Hello John Doe"));
+        assertEquals(new Gentleman().sayHello("John Doe"), "Hello John Doe");
     }
     @Test
         public void testSayHello2() {
@@ -18,6 +17,6 @@ public class GentlemanTest {
             //When
                 String hello = gentleman.sayHello("");
             //Then
-                assertThat(hello, equalTo("Hello Anonymous"));
+                assertEquals(hello, "Hello Anonymous");
         }
 }
