@@ -12,6 +12,9 @@ public class ClassRecords {
     private List<Student> students = new ArrayList<>();
 
     private boolean isEmpty(String str) {
+        if (str == null || str.isEmpty() || str.isBlank()) {
+            return true;
+        }
         return false;
     }
 
@@ -48,6 +51,9 @@ public class ClassRecords {
         double sum = 0.0;
         double counter = 0.0;
         for (Student studentItem: students) {
+            if (studentItem.calculateAverage() == 0) {
+                throw new ArithmeticException("No marks present, average calculation aborted!");
+            }
             sum += studentItem.calculateAverage();
             counter++;
         }
@@ -58,6 +64,9 @@ public class ClassRecords {
         double sum = 0.0;
         double counter = 0.0;
         for (Student studentItem: students) {
+            if (studentItem == null) {
+                throw new ArithmeticException("No student in the class, average calculation aborted!");
+            }
             sum += studentItem.calculateSubjectAverage(subject);
             counter++;
         }
@@ -66,17 +75,29 @@ public class ClassRecords {
     // kihagyja azon diákokat, akiknek az adott tantárgyból nincs jegye
 
     public Student findStudentByName(String name) {
+        if (isEmpty(name)) {
+            throw new IllegalArgumentException("Student name must not be empty!");
+        }
+        Student resultStudent = null;
         for (Student studentItem: students) {
+            if (studentItem == null) {
+                throw new IllegalStateException("No students to search!");
+            }
             if (studentItem.getName().equals(name)) {
-                return studentItem;
+                resultStudent = studentItem;
+            } else {
+                throw new IllegalArgumentException("Student by this name cannot be found! " + name);
             }
         }
-        return null;
+        return resultStudent;
     }// név szerint megkeres egy diákot az osztályban
 
     public Student repetition() {
         int counter = 0;
         for (Student studentItem: students) {
+            if (studentItem == null) {
+                throw new IllegalStateException("No students to select for repetition!");
+            }
             counter++;
         }
         return students.get(rnd.nextInt(counter));
