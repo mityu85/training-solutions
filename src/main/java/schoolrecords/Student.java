@@ -5,14 +5,20 @@ import java.util.List;
 
 public class Student {
 
-    private List<Mark> marks = new ArrayList<>();
-    private String name;
+    private final  List<Mark> marks = new ArrayList<>();
+    private final String name;
 
     private boolean isEmpty(String str) {
+        if (str == null || str.isEmpty() || str.isBlank()) {
+            return true;
+        }
         return false;
     }
 
     public Student(String name) {
+        if (isEmpty(name)) {
+            throw new IllegalArgumentException("Student name must not be empty!");
+        }
         this.name = name;
     }
 
@@ -20,11 +26,10 @@ public class Student {
         return name;
     }
 
-    public List<Mark> getMarks() {
-        return marks;
-    }
-
     public void grading(Mark mark) {
+        if (mark == null) {
+            throw new NullPointerException("Mark must not be null!");
+        }
         marks.add(mark);
     } // érdemjegy rögzítése
 
