@@ -7,7 +7,7 @@ import java.util.Random;
 public class ClassRecords {
 
     private final String className;
-    private final Random rnd;
+    private Random rnd;
     private final List<Student> students = new ArrayList<>();
 
     private boolean isEmpty(String str) {
@@ -15,6 +15,9 @@ public class ClassRecords {
     }
 
     public ClassRecords(String className, Random rnd) {
+        if (students.size() == 0) {
+            throw new ArithmeticException("No student in the class, average calculation aborted!");
+        }
         this.className = className;
         this.rnd = rnd;
     }
@@ -25,12 +28,12 @@ public class ClassRecords {
 
     public boolean addStudent(Student student) {
         for (Student studentItem: students) {
-            if (!studentItem.getName().equals(student.getName())) {
-                students.add(student);
-                return true;
+            if (studentItem.getName().equals(student.getName())) {
+                return false;
             }
         }
-        return false;
+        students.add(student);
+        return true;
     } // felvesz egy diákot az osztályba
 
     public boolean removeStudent(Student student) {
@@ -47,7 +50,7 @@ public class ClassRecords {
         double sum = 0.0;
         double counter = 0.0;
         for (Student studentItem: students) {
-            if (studentItem.calculateAverage() == 0) {
+            if (students.size() == 0) {
                 throw new ArithmeticException("No marks present, average calculation aborted!");
             }
             sum += studentItem.calculateAverage();
@@ -89,14 +92,10 @@ public class ClassRecords {
     }// név szerint megkeres egy diákot az osztályban
 
     public Student repetition() {
-        int counter = 0;
-        for (Student studentItem: students) {
-            if (studentItem == null) {
+            if (students.size() == 0) {
                 throw new IllegalStateException("No students to select for repetition!");
-            }
-            counter++;
         }
-        return students.get(rnd.nextInt(counter));
+        return students.get(this.rnd.nextInt(students.size()));
     }//felelethez a listából random módon kiválaszt egy diákot
 
     public List<StudyResultByName> listStudyResults() {
