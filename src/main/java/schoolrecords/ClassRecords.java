@@ -1,21 +1,17 @@
 package schoolrecords;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public class ClassRecords {
 
-    private String className;
-    private Random rnd = new Random();
-    private List<Student> students = new ArrayList<>();
+    private final String className;
+    private final Random rnd;
+    private final List<Student> students = new ArrayList<>();
 
     private boolean isEmpty(String str) {
-        if (str == null || str.isEmpty() || str.isBlank()) {
-            return true;
-        }
-        return false;
+        return str == null || str.isEmpty() || str.isBlank();
     }
 
     public ClassRecords(String className, Random rnd) {
@@ -57,7 +53,7 @@ public class ClassRecords {
             sum += studentItem.calculateAverage();
             counter++;
         }
-        return  sum / counter;
+        return sum / counter;
     }//osztályátlagot számol, minden diákot figyelembe véve
 
     public double calculateClassAverageBySubject(Subject subject) {
