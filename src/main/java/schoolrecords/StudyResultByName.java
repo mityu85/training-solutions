@@ -1,5 +1,7 @@
 package schoolrecords;
 
+import java.util.Locale;
+
 public class StudyResultByName {
 
     private String studentName;
@@ -15,6 +17,7 @@ public class StudyResultByName {
     }
 
     public double getStudyAverage() {
-        return studyAverage;
+        String format = String.format(Locale.US,"%3.2f", studyAverage);
+        return Double.parseDouble(format);
     }
 }
