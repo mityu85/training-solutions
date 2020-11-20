@@ -2,6 +2,7 @@ package schoolrecords;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 public class ClassRecords {
@@ -15,9 +16,6 @@ public class ClassRecords {
     }
 
     public ClassRecords(String className, Random rnd) {
-        if (students.size() == 0) {
-            throw new ArithmeticException("No student in the class, average calculation aborted!");
-        }
         this.className = className;
         this.rnd = rnd;
     }
@@ -47,29 +45,39 @@ public class ClassRecords {
     }//kivesz egy diákot az osztályból
 
     public double calculateClassAverage() {
+        if (students.size() == 0) {
+            throw new ArithmeticException("No student in the class, average calculation aborted!");
+        }
         double sum = 0.0;
         double counter = 0.0;
         for (Student studentItem: students) {
-            if (students.size() == 0) {
+            if (studentItem.calculateAverage() == 0) {
                 throw new ArithmeticException("No marks present, average calculation aborted!");
             }
             sum += studentItem.calculateAverage();
             counter++;
         }
-        return sum / counter;
+        String format = String.format(Locale.US,"%3.2f", sum / counter);
+        return Double.parseDouble(format);
     }//osztályátlagot számol, minden diákot figyelembe véve
 
     public double calculateClassAverageBySubject(Subject subject) {
         double sum = 0.0;
         double counter = 0.0;
         for (Student studentItem: students) {
-            if (studentItem == null) {
-                throw new ArithmeticException("No student in the class, average calculation aborted!");
+            if (studentItem.calculateSubjectAverage(subject) == 0) {
+                sum += studentItem.calculateSubjectAverage(subject);
+            } else {
+                sum += studentItem.calculateSubjectAverage(subject);
+                counter++;
             }
-            sum += studentItem.calculateSubjectAverage(subject);
-            counter++;
         }
-        return sum / counter;
+        if (counter == 0.0 || sum == 0.0) {
+          //  counter--;
+            return 0;
+        }
+        String format = String.format(Locale.US,"%3.2f", sum / counter);
+        return Double.parseDouble(format);
     }//tantárgy szerinti osztályátlagot számol,
     // kihagyja azon diákokat, akiknek az adott tantárgyból nincs jegye
 
@@ -77,23 +85,25 @@ public class ClassRecords {
         if (isEmpty(name)) {
             throw new IllegalArgumentException("Student name must not be empty!");
         }
+        if (students.size() == 0) {
+            throw new IllegalStateException("No students to search!");
+        }
+        List<Student> foundStudentList = new ArrayList<>();
         Student resultStudent = null;
         for (Student studentItem: students) {
-            if (studentItem == null) {
-                throw new IllegalStateException("No students to search!");
-            }
             if (studentItem.getName().equals(name)) {
-                resultStudent = studentItem;
-            } else {
-                throw new IllegalArgumentException("Student by this name cannot be found! " + name);
+                foundStudentList.add(studentItem);
             }
         }
-        return resultStudent;
+        if (foundStudentList.size() == 0) {
+            throw new IllegalArgumentException("Student by this name cannot be found! " + name);
+        }
+        return foundStudentList.get(0);
     }// név szerint megkeres egy diákot az osztályban
 
     public Student repetition() {
-            if (students.size() == 0) {
-                throw new IllegalStateException("No students to select for repetition!");
+        if (students.size() == 0) {
+            throw new IllegalStateException("No students to select for repetition!");
         }
         return students.get(this.rnd.nextInt(students.size()));
     }//felelethez a listából random módon kiválaszt egy diákot
@@ -112,6 +122,6 @@ public class ClassRecords {
         for (Student studentItem: students) {
             strings.add(studentItem.getName());
         }
-        return String.join(",", strings);
+        return String.join(", ", strings);
     }//kilistázza a diákok neveit, vesszővel elválasztva
 }
