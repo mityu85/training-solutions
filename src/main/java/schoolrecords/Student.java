@@ -2,6 +2,7 @@ package schoolrecords;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class Student {
 
@@ -37,28 +38,41 @@ public class Student {
         double sum = 0.0;
         double counter = 0.0;
         for (Mark markItem: marks){
+            if (marks.size() == 0) {
+                throw new ArithmeticException("No marks present, average calculation aborted!");
+            }
             sum += markItem.getMarkType().getValue();
             counter++;
         }
-        return sum / counter;
+        if (counter == 0.0 || sum == 0.0) {
+            return 0.0;
+        }
+        String format = String.format(Locale.US,"%3.2f", sum / counter);
+        return Double.parseDouble(format);
     } // teljes átlag számolása
 
     public double calculateSubjectAverage(Subject subject) {
         double sum = 0.0;
         double counter = 0.0;
         for (Mark markItem: marks) {
-            if (markItem.getSubject().equals(subject.getSubjectName())) {
+            if (markItem.getSubject().getSubjectName().equals(subject.getSubjectName())) {
                 sum += markItem.getMarkType().getValue();
                 counter++;
+            } else {
+                sum += 0;
             }
         }
+        if (counter == 0.0 || sum == 0.0) {
+            return 0;
+        }
         return sum / counter;
+        //return 2.75;
     } // tantárgyhoz tartozó átlag számítása
 
     public String toString() {
         for (Mark markItem: marks) {
-           return name + " marks: " + markItem.getSubject() + ": " +
-                   markItem.getMarkType().getDescription() + "(" +
+           return name + " marks: " + markItem.getSubject().getSubjectName() + ": " +
+                   markItem.getMarkType().getDescription().toString() + "(" +
                    markItem.getMarkType().getValue() + ")";
         }
         return null;
