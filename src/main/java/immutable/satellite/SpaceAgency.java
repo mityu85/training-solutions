@@ -12,7 +12,9 @@ public class SpaceAgency {
     }
 
     public void registerSatellite(Satellite satellite) {
-
+        if (satellite == null) {
+            throw new NullPointerException("Parameter must not be null!");
+        }
         satellites.add(satellite);
     }
 
@@ -20,16 +22,20 @@ public class SpaceAgency {
         if (isEmpty(registerIdent)) {
             throw new IllegalArgumentException("registerIndent");
         }
+        if (satellites.size() == 0) {
+            throw new IllegalArgumentException("Satellite with the given registration cannot be found!" + registerIdent);
+        }
 
         Satellite satelliteResult = null;
-        for (Satellite satellite: satellites) {
-            if (satellite == null) {
-                throw new IllegalStateException("Satellite");
-            }
+        for (Satellite satellite : satellites) {
             if (satellite.getRegisterIdent().equals(registerIdent)) {
                 satelliteResult = satellite;
             }
         }
         return satelliteResult;
+    }
+
+    public String toString() {
+        return satellites.toString();
     }
 }
