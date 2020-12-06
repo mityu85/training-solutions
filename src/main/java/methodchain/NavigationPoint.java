@@ -19,6 +19,6 @@ public class NavigationPoint {
     }
 
     public String toString() {
-        return "distance: " + actualDistance + ", azimut: " + actualAzimut;
+        return "distance: " + actualDistance + " azimut: " + actualAzimut;
     }
 }
