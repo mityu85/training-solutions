@@ -9,17 +9,16 @@ public class Robot {
     private int azimut;
     private List<NavigationPoint> navigationPoints = new ArrayList<>();
 
-    public Robot(int distance, int azimut) {
-        this.distance = distance;
-        this.azimut = azimut;
-    }
-
     public int getDistance() {
         return distance;
     }
 
     public int getAzimut() {
         return azimut;
+    }
+
+    public List<NavigationPoint> getNavigationPoints() {
+        return navigationPoints;
     }
 
     public Robot go(int meter) {
