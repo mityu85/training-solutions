@@ -1,4 +1,4 @@
-package exeptions.polinom;
+package exceptions.polinom;
 
 public class Polynomial {
     private double[] coefficients;
