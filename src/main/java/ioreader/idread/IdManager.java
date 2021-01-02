@@ -1,4 +1,4 @@
-package idread;
+package ioreader.idread;
 
 import java.io.BufferedReader;
 import java.io.IOException;
