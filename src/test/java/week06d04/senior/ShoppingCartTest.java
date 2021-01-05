@@ -9,19 +9,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ShoppingCartTest {
 
-    ShoppingCart shoppingCart = new ShoppingCart();
+    List<Item> items = Arrays.asList(
+            new Item("apple", 10),
+            new Item("pear", 5),
+            new Item("grape", 18)
+    );
+    ShoppingCart shoppingCart = new ShoppingCart(items);
 
     @Test
     public void testAddExistingItem() {
-        shoppingCart.addItem("apple", 10);
         shoppingCart.addItem("apple", 15);
         assertEquals(25, shoppingCart.getItem("apple"));
     }
 
     @Test void testAddNewItem() {
-        shoppingCart.addItem("banana", 12);
-        shoppingCart.addItem("apple", 10);
-        shoppingCart.addItem("apple", 15);
-        assertEquals(2, shoppingCart.getItems().size());
+        shoppingCart.addItem("banana", 10);
+        assertEquals(4, shoppingCart.getItems().size());
     }
 }
