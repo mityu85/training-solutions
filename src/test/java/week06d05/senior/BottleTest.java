@@ -7,8 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class BottleTest {
 
-    Bottle petBottle = new Bottle(BottleType.PET_BOTTLE);
-    Bottle glassBottle = new Bottle(BottleType.GLASS_BOTTLE);
+    Bottle petBottle = Bottle.of(BottleType.PET_BOTTLE);
+    Bottle glassBottle = Bottle.of(BottleType.GLASS_BOTTLE);
 
     @Test
     public void testFill() {
