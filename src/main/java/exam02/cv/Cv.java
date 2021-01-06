@@ -31,14 +31,12 @@ public class Cv {
     }
 
     private int findLevel(String str) {
-        String[] array = str.split(" ");
-        int level = Integer.parseInt(array[1].substring(1, 2));
+        int level = Integer.parseInt(str.substring(str.length()-2, str.length()-1));
         return level;
     }
 
     private String findName(String str) {
-        String[] array = str.split(" ");
-        String name = array[0];
+        String name = str.substring(0, str.length()-4);
         return name;
     }
 
