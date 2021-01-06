@@ -25,7 +25,7 @@ public class Bottle {
         if (filledUntil + fillAmount <= type.getMaximumAmount()) {
             filledUntil += fillAmount;
         } else {
-            throw new IllegalStateException("The Bottle is full");
+            throw new IllegalArgumentException("The Bottle is full");
         }
     }
 }
