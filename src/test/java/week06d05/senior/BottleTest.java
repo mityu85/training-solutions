@@ -1,8 +1,5 @@
 package week06d05.senior;
 
-import immutable.satellite.CelestialCoordinates;
-import immutable.satellite.Satellite;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
