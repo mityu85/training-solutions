@@ -10,4 +10,8 @@ public interface User {
         return getFirstName() + " " + getLastName();
     }
 
+    static User of(String userName, String firstName, String lastName) {
+        return new UserImpl(userName, firstName, lastName);
+    }
+
 }
