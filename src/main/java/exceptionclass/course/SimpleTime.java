@@ -1,5 +1,7 @@
 package exceptionclass.course;
 
+import java.io.IOException;
+
 public class SimpleTime {
 
     private int hour;
@@ -18,12 +20,26 @@ public class SimpleTime {
     }
 
     public SimpleTime(String time) {
-        int hh = Integer.parseInt(time.substring(0, 2));
-        int mm = Integer.parseInt(time.substring(3, 5));
         if (time == null) {
             throw new InvalidTimeException("Time is null", time);
         }
-        if ( (hh < 0 || hh > 23) || (mm < 0 || mm > 59) ) {
+        int hh = 0;
+        int mm = 0;
+        String separator = "";
+        try {
+            hh = Integer.parseInt(time.substring(0, 2));
+            mm = Integer.parseInt(time.substring(3, 5));
+            separator = time.substring(2, 3);
+        } catch (NumberFormatException e) {
+            throw new InvalidTimeException("Time is not hh:mm", time);
+        }
+        if (hh < 0 || hh > 23) {
+            throw new InvalidTimeException("Hour is invalid (0-23)", hour);
+        }
+        if (mm < 0 || mm > 59) {
+            throw new InvalidTimeException("Minute is invalid (0-59)", minutes);
+        }
+        if (!":".equals(separator)) {
             throw new InvalidTimeException("Time is not hh:mm", time);
         }
         hour = hh;
@@ -44,6 +60,6 @@ public class SimpleTime {
 
     @Override
     public String toString() {
-        return hour + ":" + minutes;
+        return String.format("%02d:%02d", hour, minutes);
     }
 }
