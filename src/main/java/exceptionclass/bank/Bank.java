@@ -18,20 +18,20 @@ public class Bank {
         return accounts;
     }
 
-    public void subtract(Account account, int value) {
+    public void subtract(String account, double value) {
         for (Account accountItem: accounts) {
-            if (accountItem.getAccountNumber() == account.getAccountNumber()) {
-                account.subtract(value);
+            if (accountItem.getAccountNumber().equals(account)) {
+                accountItem.subtract(value);
             } else {
                 throw new InvalidBankOperationException(ErrorCode.INVALID_ACCOUNTNUMBER);
             }
         }
     }
 
-    public void deposit(Account account, int value) {
+    public void deposit(String account, double value) {
         for (Account accountItem: accounts) {
-            if (accountItem.getAccountNumber() == account.getAccountNumber()) {
-                account.deposit(value);
+            if (accountItem.getAccountNumber().equals(account)) {
+                accountItem.deposit(value);
             } else {
                 throw new InvalidBankOperationException(ErrorCode.INVALID_ACCOUNTNUMBER);
             }

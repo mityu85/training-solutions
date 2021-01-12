@@ -7,4 +7,8 @@ public class InvalidBankOperationException extends RuntimeException {
     public InvalidBankOperationException(ErrorCode errorCode) {
         this.errorCode = errorCode;
     }
+
+    public ErrorCode getErrorCode() {
+        return errorCode;
+    }
 }

@@ -28,20 +28,26 @@ public class Account {
     }
 
     public void setMaxSubtract(double maxSubtract) {
+        if (maxSubtract < 0) {
+            throw new InvalidBankOperationException(ErrorCode.INVALID_AMOUNT);
+        }
         this.maxSubtract = maxSubtract;
     }
 
-    public void subtract(int value) {
-        if (value > maxSubtract) {
+    public double subtract(double value) {
+        if (value > maxSubtract || value < 0) {
             throw new InvalidBankOperationException(ErrorCode.INVALID_AMOUNT);
         }
         if (value > balance) {
             throw new InvalidBankOperationException(ErrorCode.LOW_BALANCE);
         }
-        balance -= value;
+        return balance -= value;
     }
 
-    public void deposit(int value) {
-        balance += value;
+    public double deposit(double value) {
+        if (value < 0) {
+            throw new InvalidBankOperationException(ErrorCode.INVALID_AMOUNT);
+        }
+        return balance += value;
     }
 }
