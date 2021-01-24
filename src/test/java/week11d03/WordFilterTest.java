@@ -1,6 +1,7 @@
-package week12d03;
+package week11d03;
 
 import org.junit.jupiter.api.Test;
+import week11d03.WordFilter;
 
 import java.util.List;
 
