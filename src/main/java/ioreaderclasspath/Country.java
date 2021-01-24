@@ -1,4 +1,4 @@
-package ioreaderclasspath.countries;
+package ioreaderclasspath;
 
 public class Country {
 

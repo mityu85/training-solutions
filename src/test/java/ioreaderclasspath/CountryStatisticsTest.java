@@ -1,4 +1,4 @@
-package ioreaderclasspath.countries;
+package ioreaderclasspath;
 
 import org.junit.jupiter.api.Test;
 
