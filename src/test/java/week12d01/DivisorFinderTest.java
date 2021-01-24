@@ -1,6 +1,7 @@
 package week12d01;
 
 import org.junit.jupiter.api.Test;
+import week11d01.DivisorFinder;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

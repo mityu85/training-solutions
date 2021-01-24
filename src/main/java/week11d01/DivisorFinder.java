@@ -1,4 +1,4 @@
-package week12d01;
+package week11d01;
 
 public class DivisorFinder {
 
