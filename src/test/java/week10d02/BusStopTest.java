@@ -1,4 +1,4 @@
-package week11d01;
+package week10d02;
 
 import org.junit.jupiter.api.Test;
 import week10d02.BusStop;

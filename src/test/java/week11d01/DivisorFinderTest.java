@@ -1,4 +1,4 @@
-package week12d01;
+package week11d01;
 
 import org.junit.jupiter.api.Test;
 import week11d01.DivisorFinder;
