@@ -13,7 +13,7 @@ public class Lottery {
         List<Integer> numbers = new ArrayList<>();
         Random rand = new Random();
         for (int i = 1; i <= lotteryType; i++) {
-            numbers.add(rand.nextInt(ballCount-1)+1);
+            numbers.add(rand.nextInt(ballCount)+1);
         }
         numbers.sort(Comparator.naturalOrder());
         return numbers;
