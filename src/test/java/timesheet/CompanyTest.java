@@ -85,7 +85,6 @@ public class CompanyTest {
     public void prepareAndPrintReportTest() throws IOException {
         //Given
         Path report = new File(temporaryFolder, "test.txt").toPath();
-        Path testPath = Path.of("src/main/resources/timesheet.txt");
         String expected = "John Connor\t2013-01\t14\n" +
                 "Java\t10\n" +
                 "C++\t4\n";
