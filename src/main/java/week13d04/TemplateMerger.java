@@ -11,10 +11,11 @@ public class TemplateMerger {
     private List<Employee> employees = new ArrayList<>();
 
     public String merge(Path file, List<Employee> employees) {
+        employees = this.employees;
         String str = "";
         fillUpEmployeeFromFile(file);
         for (Employee emp: employees) {
-            str += "Az alkalmazott neve:" + emp.getName()
+            str += "Az alkalmazott neve: " + emp.getName()
                         + ", születési éve: " + emp.getBirthYear() + "\n";
         }
         return str;
@@ -26,7 +27,7 @@ public class TemplateMerger {
             strings = Files.readAllLines(file);
             for (String str: strings) {
                 String[] temp = str.split(",");
-                employees.add(new Employee(temp[0].substring(22), Integer.parseInt(temp[1].substring(17))));
+                employees.add(new Employee(temp[0].substring(21), Integer.parseInt(temp[1].substring(16))));
             }
         } catch (IOException e) {
             throw new IllegalStateException("File can not read", e);
