@@ -8,7 +8,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class OrderedLibraryTest {
@@ -31,7 +30,7 @@ public class OrderedLibraryTest {
         // Given
         List<Book> orderedBookList = library.orderedByTitle();
         //Then
-        assertEquals(orderedBookList.get(0).getTitle(), equalTo("Utitársak"));
+        assertEquals("Utitársak", orderedBookList.get(0).getTitle());
     }
 
     @Test
@@ -39,7 +38,7 @@ public class OrderedLibraryTest {
         // Given
         List<Book> orderedBookList = library.orderedByAuthor();
         //Then
-        assertEquals(orderedBookList.get(0).getAuthor(), equalTo("Utasy Kristóf"));
+        assertEquals("Utasy Kristóf", orderedBookList.get(0).getAuthor());
     }
 
     @Test
