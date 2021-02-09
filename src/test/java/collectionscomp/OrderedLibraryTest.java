@@ -1,7 +1,9 @@
 package collectionscomp;
 
-import org.junit.Before;
-import org.junit.Test;
+
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -15,7 +17,7 @@ public class OrderedLibraryTest {
     private OrderedLibrary library;
 
 
-    @Before
+    @BeforeEach
     public void setUp() {
         List<Book> bookList = new LinkedList<>(Arrays.asList(new Book(1245, "Őrület", "Utasy Kristóf"),
                 new Book(2454, "Álom", "Ómolnár Géza"),
