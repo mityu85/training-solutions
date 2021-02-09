@@ -1,6 +1,6 @@
 package week13d04;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.nio.file.Path;
 import java.util.Arrays;
