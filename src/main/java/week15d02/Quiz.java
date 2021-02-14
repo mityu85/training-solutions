@@ -1,7 +1,5 @@
 package week15d02;
 
-import collectionsmap.Entry;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
