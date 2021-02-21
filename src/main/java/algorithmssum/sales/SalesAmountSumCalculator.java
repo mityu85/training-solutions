@@ -1,4 +1,4 @@
-package algorithmsum.sales;
+package algorithmssum.sales;
 
 import java.util.List;
 

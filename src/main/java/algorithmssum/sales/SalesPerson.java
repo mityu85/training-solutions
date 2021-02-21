@@ -1,4 +1,4 @@
-package algorithmsum.sales;
+package algorithmssum.sales;
 
 public class SalesPerson {
 

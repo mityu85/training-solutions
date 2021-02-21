@@ -1,4 +1,4 @@
-package algorithmsum.transactions;
+package algorithmssum.transactions;
 
 public class Transaction {
 
