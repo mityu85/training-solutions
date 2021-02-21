@@ -1,4 +1,4 @@
-package inheritanceconstructore.classroom;
+package inheritanceconstructor.classroom;
 
 public class ClassRoom extends Room{
 

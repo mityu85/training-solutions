@@ -1,4 +1,4 @@
-package inheritanceconstructore.classroom;
+package inheritanceconstructor.classroom;
 
 import org.junit.jupiter.api.Test;
 

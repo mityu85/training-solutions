@@ -1,4 +1,4 @@
-package inheritanceconstructore.classroom;
+package inheritanceconstructor.classroom;
 
 public enum Facility {
     PROJECTOR, COMPUTERS, CHALKBOARD;

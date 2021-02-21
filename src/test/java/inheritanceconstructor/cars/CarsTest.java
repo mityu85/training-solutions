@@ -1,4 +1,4 @@
-package inheritanceconstructore.cars;
+package inheritanceconstructor.cars;
 
 import org.junit.jupiter.api.Test;
 
