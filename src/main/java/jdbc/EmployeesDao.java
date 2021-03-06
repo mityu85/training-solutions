@@ -13,15 +13,31 @@ public class EmployeesDao {
         this.dataSource = dataSource;
     }
 
-    public void createEmployee(String name) {
+    public long createEmployee(String name) {
         try (
                 Connection conn = dataSource.getConnection();
-                PreparedStatement stmt = conn.prepareStatement("insert into employees(emp_name) values (?)")
+                PreparedStatement stmt = conn.prepareStatement("insert into employees(emp_name) values (?)",
+                        Statement.RETURN_GENERATED_KEYS)
                 ) {
             stmt.setString(1, name);
             stmt.executeUpdate();
+
+            return getIdByStatement(stmt);
         } catch (SQLException e) {
             throw new IllegalStateException("Cannot insert", e);
+        }
+    }
+
+    private long getIdByStatement(PreparedStatement stmt) {
+        try (
+                ResultSet rs = stmt.getGeneratedKeys()
+                ) {
+            if (rs.next()) {
+                return rs.getLong(1);
+            }
+            throw new IllegalStateException("Cannot get id");
+        } catch (SQLException e) {
+            throw new IllegalStateException("Cannot get id", e);
         }
     }
 
@@ -45,7 +61,7 @@ public class EmployeesDao {
     public String findEmployeeNameById(long id) {
         try (
                 Connection conn = dataSource.getConnection();
-                PreparedStatement ps = conn.prepareStatement("select emp_name from employee where id = ?");
+                PreparedStatement ps = conn.prepareStatement("select emp_name from employees where id = ?");
                 ) {
             ps.setLong(1, id);
 
