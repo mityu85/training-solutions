@@ -5,11 +5,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mariadb.jdbc.MariaDbDataSource;
 
-import java.sql.Array;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.Arrays;
-import java.util.List;
+import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -21,6 +20,10 @@ public class ActivityDaoTest {
     Activity hiking = new Activity(LocalDateTime.of(2021, 2, 14, 9, 45, 6), "hiking", Type.HIKING);
     Activity running = new Activity(LocalDateTime.of(2021, 3, 1, 11, 38, 59), "running", Type.RUNNING);
     Activity basketball =new Activity(LocalDateTime.of(2021, 3, 6, 14, 52, 3), "basketball", Type.BASKETBALL);
+
+    TrackPoint tp1 = new TrackPoint(LocalDateTime.of(2021, 3, 6, 14, 52, 3), 15.4589, 8.4598);
+    TrackPoint tp2 = new TrackPoint(LocalDateTime.of(2021, 3, 1, 11, 38, 59), -7.7845, 9.1253);
+    TrackPoint tp3 = new TrackPoint(LocalDateTime.of(2021, 3, 1, 11, 38, 59), -95, 9.1253);
 
     @BeforeEach
     public void init(){
@@ -66,5 +69,22 @@ public class ActivityDaoTest {
         activityDao.saveActivity(basketball);
 
         assertEquals(4, activityDao.listActivities().size());
+    }
+
+    @Test
+    public void testListActivitiesEmpty() {
+        assertEquals(Collections.emptyList(), activityDao.listActivities());
+    }
+
+    @Test
+    public void testSaveActivityWithTrackPoint() {
+        activityDao.saveActivityWithTrackPoints(basketball, Arrays.asList(tp1, tp2));
+        assertEquals(activityDao.listActivities().get(0).getType(), activityDao.findActivityById(1).getType());
+    }
+
+    @Test
+    public void testSaveActivityWithTrackPointRollback() {
+        activityDao.saveActivityWithTrackPoints(basketball, Arrays.asList(tp1, tp2, tp3));
+        assertEquals(Collections.emptyMap(), activityDao.findActivityAndTrackPointById(1));
     }
 }
