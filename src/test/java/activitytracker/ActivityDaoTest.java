@@ -79,7 +79,7 @@ public class ActivityDaoTest {
     @Test
     public void testSaveActivityWithTrackPoint() {
         activityDao.saveActivityWithTrackPoints(basketball, Arrays.asList(tp1, tp2));
-        assertEquals(activityDao.listActivities().get(0).getType(), activityDao.findActivityById(1).getType());
+        assertEquals(1, activityDao.findActivityAndTrackPointById(1).entrySet().size());
     }
 
     @Test

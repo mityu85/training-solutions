@@ -89,15 +89,15 @@ public class ActivityDao {
         try(
                 Connection conn = dataSource.getConnection();
                 Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery("select * from activities, trackpoints");
+                ResultSet rs = stmt.executeQuery("select * from activities right join (trackpoints) on (activities.id = trackpoints.activity_id)")
         ) {
             List<TrackPoint> trackPoints = new ArrayList<>();
             while (rs.next()) {
                 trackPoints.add(new TrackPoint(rs.getLong(5), rs.getTimestamp("trackpoint_time").toLocalDateTime(),
-                        rs.getDouble("lat"), rs.getDouble("lon"), rs.getLong("activity_is")));
+                        rs.getDouble("lat"), rs.getDouble("lon"), rs.getLong("activity_id")));
             }
             if (!trackPoints.isEmpty()) {
-                m.put(findActivityById(rs.getLong(1)), trackPoints);
+                m.put(findActivityById(id), trackPoints);
             }
             return m;
         } catch (SQLException e) {
