@@ -2,14 +2,15 @@ package exam03retake02;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.text.Collator;
 import java.util.*;
 
 public class BalatonStorm {
 
-    public Set<String> getStationsInStorm(BufferedReader reader) {
+    public List<String> getStationsInStorm(BufferedReader reader) {
         try (BufferedReader br = new BufferedReader(reader)) {
-          Set<String> stations = new LinkedHashSet<>();
-          Map<String, String> map = new LinkedHashMap<>();
+          Set<String> stations = new TreeSet<>(Collator.getInstance(new Locale("hu", "HU")));
+          Map<String, String> map = new HashMap<>();
           String line;
           while ((line = br.readLine()) != null) {
               if (line.contains("},")) {
@@ -24,7 +25,7 @@ public class BalatonStorm {
                   }
               }
           }
-          return stations;
+          return new ArrayList<>(stations);
         } catch (IOException e) {
             throw new IllegalStateException("File cannot read");
         }
