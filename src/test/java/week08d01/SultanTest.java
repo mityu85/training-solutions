@@ -11,6 +11,6 @@ public class SultanTest {
     @Test
     public void testOpenDoor() {
 
-        assertEquals("", sultan.openDoors());
+        assertEquals(false, sultan.openDoors().get(3).isClosed());
     }
 }
