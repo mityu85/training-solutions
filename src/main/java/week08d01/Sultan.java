@@ -1,26 +1,24 @@
 package week08d01;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class Sultan {
 
-    private List<Jail> jails = new ArrayList<>();
+    private Map<Integer, Jail> jails = new HashMap<>();
 
-    public List<Jail> getJails() {
+    public Map<Integer, Jail> getJails() {
         return jails;
     }
 
-    public List<Jail> openDoors() {
-        for (int i = 0; i < 100; i++) {
-            for (int j = 0; j < 100; j++) {
+    public Map<Integer, Jail> openDoors() {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
                 fillCells(i, j);
             }
         }
-        Iterator<Jail> i = jails.iterator();
+        Iterator<Map.Entry<Integer, Jail>> i = jails.entrySet().iterator();
         while (i.hasNext()) {
-            if (i.next().isClosed() == true) {
+            if (jails.get(i.next().getKey()).isClosed() == true) {
                 i.remove();
             }
         }
@@ -30,7 +28,7 @@ public class Sultan {
 
     private void fillCells(int i, int j) {
         if (i == 0) {
-            jails.add(new Jail(j + 1, false));
+            jails.put(j+1, new Jail(j + 1, false));
         } else {
             if (j % i == 0) {
                 turnKey(j);
@@ -39,10 +37,10 @@ public class Sultan {
     }
 
     private void turnKey(int j) {
-        if (jails.get(j).isClosed()) {
-            jails.get(j).setClosed(false);
+        if (jails.get(j+1).isClosed()) {
+            jails.get(j+1).setClosed(false);
         } else {
-            jails.get(j).setClosed(true);
+            jails.get(j+1).setClosed(true);
         }
     }
 }
