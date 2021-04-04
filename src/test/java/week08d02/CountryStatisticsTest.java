@@ -36,7 +36,7 @@ public class CountryStatisticsTest {
     }
 
     @Test
-    public void maxPopulationTest() {
+    public void maxPopulationTest() { 
         assertEquals(countryStatistics.getCountries().get(2), countryStatistics.maxPopulation());
     }
 }
