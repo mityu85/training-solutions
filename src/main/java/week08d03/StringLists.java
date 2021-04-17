@@ -22,4 +22,24 @@ public class StringLists {
         }
         return unionList;
     }
+
+    public List<String> shortestWord(List<String> words) {
+        List<String> shortestWords = new ArrayList<>();
+        int min = Integer.MAX_VALUE;
+        for (String word: words) {
+            if (word.length() < min) {
+                min = word.length();
+            }
+        }
+        return getShortestWords(words, shortestWords, min);
+    }
+
+    private List<String> getShortestWords(List<String> words, List<String> shortestWords, int min) {
+        for (String word: words) {
+            if (word.length() == min) {
+                shortestWords.add(word);
+            }
+        }
+        return shortestWords;
+    }
 }
